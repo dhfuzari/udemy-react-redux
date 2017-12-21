@@ -1,0 +1,9 @@
+1- Iniciar o server: mongod
+
+2- Iniciar server node.js: 
+a) npm run dev
+b) npm run production
+
+3- Iniciar o front-end
+a) npm run dev
+b) npm run production
