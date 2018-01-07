@@ -1,8 +1,8 @@
 const express = require('express');
 const server = express();
 
-// use -> Definie um tratamento de request que mapeia todos os verbos/métodos http e defini a url recebida
-// como o prefixo inicial da url para usar o middleware atual, ou seja e tratara qualquer url que comece com 
+// use -> Definie um tratamento de request que mapeia todos os verbos/métodos http e define a url recebida
+// como o prefixo inicial da url para usar o middleware atual, ou seja, tratará qualquer url que comece com 
 // "/api" como no exemplo abaixo
 
 
