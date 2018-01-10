@@ -3,7 +3,7 @@ const server = express();
 
 server.get('/', function(req, res, next){
     console.log('Inicio...');
-    next();
+    next()
     console.log('...Fim');
 });
 

@@ -14,4 +14,3 @@ server.route('/clientes')
     .patch((req, res) => res.send('Patch'))
 
 server.listen(3000, () => console.log('executando...'));
-
