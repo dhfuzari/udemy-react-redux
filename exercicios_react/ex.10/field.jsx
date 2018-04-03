@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { changeValue } from './fieldActions';
 
-class Field extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { value: this.props.initialValue }
-
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({ value: event.target.value });
-    }
-
-    render() {                
+class Field extends Component {    
+    render() {            
         return(
             <div>   
-                <label htmlFor="">{this.state.value}</label>
+                <label htmlFor="">{this.props.value}</label>
                 <input 
                     type="text"
-                    onChange={this.handleChange}
-                    value={this.state.value}                    
+                    onChange={this.props.changeValue}
+                    value={this.props.value}                    
                 />
             </div>
         );
     }
 }
 
-export default Field;
+function mapStateToProps(state) {
+    return { value: state.field.value };
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ changeValue }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Field);

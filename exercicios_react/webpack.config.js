@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 
 module.exports = {
-    entry: './ex.10/index.jsx',
+    entry: './ex.12/index.jsx',
     output: { 
         path: __dirname + '/public',
         filename: 'bundle.js'
@@ -23,5 +23,6 @@ module.exports = {
                 plugins: ['transform-object-rest-spread']
             }
         }]
-    }
+    },
+    devtool: 'eval-source-map'
 }
