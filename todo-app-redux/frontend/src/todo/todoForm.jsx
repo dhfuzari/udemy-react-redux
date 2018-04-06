@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { changeDescription, search } from './todoActions';
+import { changeDescription, search, add } from './todoActions';
 import Grid from '../template/grid'
 import IconButton from '../template/iconButton'
 
@@ -13,8 +13,9 @@ class TodoForm extends React.Component {
     }
 
     keyHandler(e) {
+        const { add, search, description } = this.props;
         if(e.key === 'Enter') {
-            e.shiftKey ? this.props.handleSearch() : this.props.handleAdd()
+            e.shiftKey ? search() : add(description)
         } else if(e.key === 'Escape') {
             this.props.handleClear(); /* TODO: Esta linha ainda não funciona */
         }
@@ -25,6 +26,7 @@ class TodoForm extends React.Component {
     }
 
     render() {
+        const { add, search, description, changeDescription } = this.props;
         return (
             <div className="todoForm" role="form">
                 <div className="row">
@@ -35,8 +37,8 @@ class TodoForm extends React.Component {
                             id="description"
                             className="form-control"
                             placeholder="Adicione uma tarefa"
-                            value={this.props.description}
-                            onChange={this.props.changeDescription}
+                            value={description}
+                            onChange={changeDescription}
                             onKeyUp={this.keyHandler}
                         />
                     </Grid>
@@ -44,12 +46,12 @@ class TodoForm extends React.Component {
                         <IconButton
                             style="primary"
                             icon="plus"
-                            onClick={this.props.handleAdd}
+                            onClick={() => add(description)}
                         />
                         <IconButton
                             style="info"
                             icon="search"
-                            onClick={this.props.handleSearch}
+                            onClick={search}
                         />
                         <IconButton
                             style="default"
@@ -66,7 +68,7 @@ class TodoForm extends React.Component {
 const mapStateToProps = state => ({description: state.todo.description});
 
 const mapDispatchToProps = dispatch => bindActionCreators({ 
-    changeDescription: changeDescription, search: search 
+    changeDescription, search, add 
 }, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);
