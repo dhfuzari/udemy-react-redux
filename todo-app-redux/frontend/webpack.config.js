@@ -38,6 +38,6 @@ module.exports = {
                 loader: 'file'
             }
         ]
-    }    
-    
+    },    
+    devtool: 'eval-source-map'
 }

@@ -2,13 +2,13 @@ const INITIAL_STATE = { description: '', list: [] };
 
 export default function(state = INITIAL_STATE, action) {
     switch(action.type) {
-        case 'CHANGE_DESCRIPTION': 
+        case 'CHANGE_DESCRIPTION': debugger;
             return { ...state, description: action.payload }
-        case 'TODO_SEARCHED':
+        case 'TODO_SEARCHED': debugger;
             return { ...state, list: action.payload.data }
-        case 'TODO_ADDED': 
+        case 'TODO_ADDED': debugger;
             return { ...state, description: '' }
-        default: 
+        default: debugger;
             return state;
     }
 }
