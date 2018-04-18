@@ -2,19 +2,21 @@ import axios from 'axios';
 
 const URL = 'http://localhost:3003/api/todos';
 
-export const changeDescription = (e) => {
-    return {
-        type: 'CHANGE_DESCRIPTION',
-        payload: e.target.value
-    };
-}
+export const changeDescription = (e) => ({
+    type: 'CHANGE_DESCRIPTION',
+    payload: e.target.value
+})
 
-export const search = (description) => {
+export const search = () => {
     return (dispatch, getState) => {
         const description = getState().todo.description;
         const search = description ? `&description__regex=/${description}/` : ''
         const request = axios.get(`${URL}?sort=-createdAt${search}`)
-            .then(resp => dispatch({ type: 'TODO_SEARCHED', payload: resp.data }))
+            .then(resp => dispatch({ 
+                type: 'TODO_SEARCHED', 
+                payload: resp.data 
+            })
+        )
     }
 }
 
